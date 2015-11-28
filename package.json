@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Simple, Responsive, Grids",
   "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rockerest/surge-css.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,8 +17,12 @@
     "css",
     "sass"
   ],
-  "author": "",
+  "author": "Tom Randolph <websites@thomasrandolph.info>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rockerest/surge-css/issues"
+  },
+  "homepage": "https://github.com/rockerest/surge-css",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-sass": "^1.1.0",
