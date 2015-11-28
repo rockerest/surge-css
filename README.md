@@ -69,7 +69,7 @@
 
 ### Find more info about it
 
-[The *real* documentation](surge-css.com)
+[The *real* documentation](http://surge-css.com)
 
 ### Report a problem with it
 
