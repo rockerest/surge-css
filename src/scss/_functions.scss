@@ -1,0 +1,51 @@
+@function implode( $list, $glue: '', $is-nested: false ){
+    $result: null;
+
+    @for $i from 1 through length( $list ){
+        $e: nth( $list, $i );
+
+        @if type-of( $e ) == list{
+            $result: $result#{implode( $e, $glue, true )};
+        }
+        @else {
+            $e: remove-spaces( $e );
+            $result: if( $i != length( $list ) or $is-nested, $result#{$e}#{$glue}, $result#{$e} );
+        }
+    }
+
+    @return $result;
+}
+
+@function remove-spaces( $string ){
+    $first: str-index( $string, ' ' );
+    @if $first != null{
+        $string: if( $first == 1, str-slice( $string, 2 ), str-slice( $string, 1, $first - 1 ) + str-slice( $string, $first + 1 ) );
+    }
+
+    @return if( str-index( $string, ' ') == null, $string, remove-spaces( $string ) );
+}
+
+@function lcds( $max-cols, $curr-percent ){
+    $lcds: ();
+    @each $divisor in $surge-divisors{
+        @each $other-divisor in $surge-divisors{
+            $sub-divisor: ( $max-cols / $other-divisor );
+
+            @if percentage( $divisor / $sub-divisor ) == $curr-percent{
+                @if floor( $sub-divisor ) ==  $sub-divisor{
+                    $lcds: join( $lcds, ( remove-spaces( #{$divisor}/#{$sub-divisor} ) ) )
+                }
+            }
+        }
+    }
+
+    @return $lcds;
+}
+
+@function add-unique-to-list( $item, $list ){
+    @if index( $list, $item ) == null{
+        $list: join( $list, ( $item ) );
+    }
+
+    @return $list;
+}

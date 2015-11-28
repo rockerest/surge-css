@@ -1,0 +1,17 @@
+$surge-separator: "-" !default;
+$surge-name: "surge" !default;
+$surge-prefix: if( $surge-name == "", "", "#{$surge-name}#{$surge-separator}" );
+
+$surge-grid-name: "grid" !default;
+$surge-column-name: "column" !default;
+
+$surge-small-column-max: 24 !default;
+$surge-large-column-max: 10 !default;
+
+$surge-divisors: 1 2 3 4 5 6 7 8 9 10 11 12 !default;
+
+$surge-responsive: (
+    'tablet': 48em,
+    'desktop': 72em,
+    'large': 100em
+) !default;

@@ -1,0 +1,24 @@
+{
+  "name": "surge",
+  "version": "0.1.0",
+  "description": "Simple, Responsive, Grids",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "simple",
+    "responsive",
+    "grid",
+    "css",
+    "sass"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-sass": "^1.1.0",
+    "load-grunt-configs": "^0.4.3",
+    "load-grunt-tasks": "^3.3.0"
+  }
+}

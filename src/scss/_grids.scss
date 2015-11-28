@@ -1,0 +1,7 @@
+[class*='#{$surge-prefix}#{$surge-grid-name}']{
+    margin: 0;
+
+    &:after{
+        @extend .clear;
+    }
+}

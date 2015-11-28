@@ -1,0 +1,10 @@
+{
+    "build": {
+        "options": {
+            "style": "expanded"
+        },
+        "files": {
+            "build/css/surge.css": "src/scss/surge.scss"
+        }
+    }
+}

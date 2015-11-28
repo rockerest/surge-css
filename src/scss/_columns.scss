@@ -1,0 +1,54 @@
+$surge-complete-column-prefix: "#{$surge-prefix}#{$surge-column-name}";
+$surge-known-widths: 1,"#{$surge-small-column-max}/#{$surge-small-column-max}","#{$surge-large-column-max}/#{$surge-large-column-max}";
+@each $divisor in $surge-divisors{
+    $divisor-list: "#{$divisor}/#{$divisor}";
+    $surge-known-widths: join( $surge-known-widths, $divisor-list );
+}
+
+$surge-widths: ( '100%': $surge-known-widths );
+
+@for $i from 1 through $surge-small-column-max{
+    $surge-sm-percent: percentage( $i / $surge-small-column-max );
+    $list: map-get( $surge-widths, quote( $surge-sm-percent ) );
+    $list: if( $list == null, (), $list );
+
+    $list: add-unique-to-list( remove-spaces( #{$i}/#{$surge-small-column-max} ), $list );
+    @each $lcd in lcds( $surge-small-column-max, $surge-sm-percent ){
+        $list: add-unique-to-list( $lcd, $list );
+    }
+
+    $surge-widths: map-merge( $surge-widths, ( quote( $surge-sm-percent ): $list ) );
+}
+
+@for $i from 1 through $surge-large-column-max{
+    $surge-lg-percent: percentage( $i / $surge-large-column-max );
+    $list: map-get( $surge-widths, quote( $surge-lg-percent ) );
+    $list: if( $list == null, (), $list );
+
+    $list: add-unique-to-list( remove-spaces( #{$i}/#{$surge-large-column-max} ), $list );
+    @each $lcd in lcds( $surge-large-column-max, $surge-lg-percent ){
+        $list: add-unique-to-list( $lcd, $list );
+    }
+
+    $surge-widths: map-merge( $surge-widths, ( quote( $surge-lg-percent ): $list ) );
+}
+
+[class*='#{$surge-complete-column-prefix}']{
+    float: left;
+}
+
+@each $percent, $fraction-list in $surge-widths{
+    $string: "&";
+
+    @for $i from 1 through length( $fraction-list ){
+        $item: nth( $fraction-list, $i );
+        $selector: "[class*='#{$surge-complete-column-prefix}#{$surge-separator}" + $item + "']";
+
+        $string: $string + $selector;
+        $string: $string + if( $i == length( $fraction-list ), "", ",&" );
+    }
+
+    #{$string}{
+        width: unquote( $percent );
+    }
+}
