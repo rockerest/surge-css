@@ -1,13 +1,9 @@
 $surge-responsive-length: length( $surge-responsive );
 
-$i: 1;
-
-@mixin surge-responsive( $media ){
-    @while $i <= $surge-responsive-length{
-        @if $media == nth( nth( $surge-responsive, $i ), 1 ){
-            @media only screen and (min-width: nth( nth( $surge-responsive, $i ), 2 ) ){ @content; }
+@mixin surge-respond-to( $media ){
+    @each $name, $breakpoint in $surge-responsive{
+        @if $media == $name{
+            @media only screen and (min-width: $breakpoint ){ @content; }
         }
-
-        $i: $i + 1;
     }
 }

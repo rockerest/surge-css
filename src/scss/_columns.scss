@@ -37,18 +37,40 @@ $surge-widths: ( '100%': $surge-known-widths );
     float: left;
 }
 
+// Create simple, single columns
 @each $percent, $fraction-list in $surge-widths{
-    $string: "&";
+    $string: "";
 
     @for $i from 1 through length( $fraction-list ){
         $item: nth( $fraction-list, $i );
-        $selector: "[class*='#{$surge-complete-column-prefix}#{$surge-separator}" + $item + "']";
+        $selector: "[class~='#{$surge-complete-column-prefix}#{$surge-separator}" + $item + "']";
 
         $string: $string + $selector;
-        $string: $string + if( $i == length( $fraction-list ), "", ",&" );
+        $string: $string + if( $i == length( $fraction-list ), "", "," );
     }
 
     #{$string}{
         width: unquote( $percent );
+    }
+}
+
+// Create columns for each responsive breakpoint
+@each $name, $breakpoint in $surge-responsive{
+    @include surge-respond-to( $name ){
+        @each $percent, $fraction-list in $surge-widths{
+            $string: "";
+
+            @for $j from 1 through length( $fraction-list ){
+                $item: nth( $fraction-list, $j );
+                $selector: "[class~='#{$surge-complete-column-prefix}#{$surge-separator}#{$name}#{$surge-separator}" + $item + "']";
+
+                $string: $string + $selector;
+                $string: $string + if( $j == length( $fraction-list ), "", "," );
+            }
+
+            #{$string}{
+                width: unquote( $percent );
+            }
+        }
     }
 }
