@@ -1,5 +1,6 @@
 [class*='#{$surge-prefix}#{$surge-grid-name}']{
     margin: 0;
+    box-sizing: border-box;
 
     &:after{
         @extend .clear;

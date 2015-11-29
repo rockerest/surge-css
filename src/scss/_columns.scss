@@ -36,6 +36,7 @@ $surge-widths: ( '100%': $surge-known-widths );
 [class*='#{$surge-prefix}#{$surge-grid-name}']{
     [class*='#{$surge-complete-column-prefix}']{
         float: left;
+        box-sizing: inherit;
     }
 
     // Create simple, single columns
