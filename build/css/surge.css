@@ -4,10 +4,12 @@
   clear: both; }
 
 [class*='surge-grid'] {
-  margin: 0; }
+  margin: 0;
+  box-sizing: border-box; }
 
 [class*='surge-grid'] [class*='surge-column'] {
-  float: left; }
+  float: left;
+  box-sizing: inherit; }
 
 [class*='surge-grid'] [class~='surge-column-1'], [class*='surge-grid'] [class~='surge-column-24/24'], [class*='surge-grid'] [class~='surge-column-10/10'], [class*='surge-grid'] [class~='surge-column-1/1'], [class*='surge-grid'] [class~='surge-column-2/2'], [class*='surge-grid'] [class~='surge-column-3/3'], [class*='surge-grid'] [class~='surge-column-4/4'], [class*='surge-grid'] [class~='surge-column-5/5'], [class*='surge-grid'] [class~='surge-column-6/6'], [class*='surge-grid'] [class~='surge-column-7/7'], [class*='surge-grid'] [class~='surge-column-8/8'], [class*='surge-grid'] [class~='surge-column-9/9'], [class*='surge-grid'] [class~='surge-column-10/10'], [class*='surge-grid'] [class~='surge-column-11/11'], [class*='surge-grid'] [class~='surge-column-12/12'] {
   width: 100%; }
